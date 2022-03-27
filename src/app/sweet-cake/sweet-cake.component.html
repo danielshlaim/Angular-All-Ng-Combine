@@ -1,0 +1,36 @@
+<h1>Sweet Cake</h1>
+<hr>
+<form #cakeType = "ngForm" (submit)="handleSubmit(cakeType.value)" >
+    <input type="text" ngModel name="name" placeholder="Cake name">
+    <br><br>
+    <input type="radio" ngModel name="type" id="chocolate" value="chocolate">
+    <label for="chocolate">Chocolate</label><br>
+    <input type="radio" ngModel name="type" id="cheese" value="cheese">
+    <label for="cheese">Cheese</label><br>
+    <input type="radio" ngModel name="type" id="carrot" value="carrot">
+    <label for="carrot">Carrot</label>
+    <br><br>
+    <input type="text" ngModel name="tags" id="tags" placeholder="Tags">
+    <p> {{cake.tags}} </p>
+    <br>
+    <button>Submit</button>
+</form>
+
+<p> Cake name: {{cake.name}} </p>
+<p> Cake tag: {{cake.tags}} </p>
+<p> Cake type: {{cake.type}} </p>
+
+<div [ngSwitch]="cake.type">
+   <p *ngSwitchCase="'chocolate'"><img src="https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="" width="100"></p>
+   <p *ngSwitchCase="'cheese'"><img src="https://www.cookingclassy.com/wp-content/uploads/2019/11/cheesecake-8.jpg" alt="" width="100" ></p>
+   <p *ngSwitchCase="'carrot'"><img src="https://foodtasia.com/wp-content/uploads/2020/04/carrot-cake-4.jpg" alt="" width="100" ></p>
+</div>
+
+
+<ul>
+    <li *ngFor="let tag of cake.tags">{{tag}}</li>
+</ul>
+
+<a *ngIf="isCarrot()" href="https://www.inspiredtaste.net/25753/carrot-cake-recipe/">Link</a>
+
+
